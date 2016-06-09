@@ -7,10 +7,14 @@
     client_id: 'cb2dc97e8e9a1cace6c35d8a2561ae25'
   });
 
+  var iframeElement   = document.querySelector('iframe');
+  var iframeElementID = iframeElement.id;
+  var widget1         = SC.Widget(iframeElement);
+  widget1.play();
   //var track_url = 'http://soundcloud.com/forss/flickermood';
-  var track_url = 'https://soundcloud.com/the-swazies/07-james-harden';
-  SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
-    console.log('oEmbed response: ', oEmbed);
-  });
+  // var track_url = 'https://soundcloud.com/the-swazies/07-james-harden';
+  // SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
+  //   console.log('oEmbed response: ', oEmbed);
+  // });
   </script>
 </body>
