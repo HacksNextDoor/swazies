@@ -1,15 +1,15 @@
 <head>
   <link rel="stylesheet" href="shilla.css">
+  <!--Materialize-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
 </head>
 
 <body style="background-color:black;">
-
-
   <video class="s-video" autoplay loop>
     <source src="$hilla_BackDrop.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-
   <div class="s-body">
     <div class="s-logo">
       <img src="img/Title.png" alt="">
@@ -25,7 +25,7 @@
   </div>
 
   <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
-  <!-- <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/202840785&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe> -->
+  <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/202840785&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;color=CD0000&ampvisual=true"></iframe>
   <script>
   SC.initialize({
     client_id: 'cb2dc97e8e9a1cace6c35d8a2561ae25'
@@ -36,15 +36,19 @@
   var iframeElementID = iframeElement.id;
   var widget1         = SC.Widget(iframeElement);
   widget1.play(); //excute playing
+
   </script>
-  <script>
+
+  <script> // Google Analytics
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-85445406-2', 'auto');
   ga('send', 'pageview');
-
   </script>
+
+  <!-- Materialize.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
 </body>
