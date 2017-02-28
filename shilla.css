@@ -16,10 +16,12 @@
 }
 
 .s-logo {
+  width: 50%;
   align-items:center;
 }
 
 .s-media-container {
+  padding: 25px;
   display:flex;
   flex-direction: row;
   height:50px;
