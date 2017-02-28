@@ -15,22 +15,18 @@
 
     <div class="music-player">
       <div class="actionButtons">
-          <!-- <button class="toggle">Toggle</button>
-          <button class="prev">Prev</button>
-          <button class="next">Next</button> -->
-
           <button class="waves-effect waves-teal btn-flat prev">
-            <img src="img/Prev.png" style="">
+            <img src="img/Prev.png" style="margin-top: 8px;">
           </button>
-          <button id="tgl" class="waves-effect waves-teal btn-flat tgl">
-            <img src="img/Play.png">
+          <button class="waves-effect waves-teal btn-flat tgl">
+            <img id="tgl" src="img/Play.png">
           </button>
           <button class="waves-effect waves-teal btn-flat next">
-            <img src="img/Next.png" style="">
+            <img src="img/Next.png" style="margin-top: 8px;">
           </button>
       </div>
+
     </div>
-     <!-- <a class="waves-effect waves-teal btn-flat">Button</a> -->
   </div>
 
 
@@ -38,9 +34,6 @@
     <div class="s-logo">
       <div style="text-align:center; padding:25px;">
         <img src="img/Title.png" alt="">
-      </div>
-      <div style="width:100%">
-        <iframe id="player" class="iframe hide" width="500" height="75" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/202840785&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;color=CD0000&ampvisual=true"></iframe>
       </div>
       <div class="s-media-container">
         <div class="s-media">
@@ -58,6 +51,7 @@
   </div>
 
 
+  <iframe id="player" class="iframe" style="position:fixed; z-index:-10;" width="500" height="75" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/202840785&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;color=CD0000&ampvisual=true"></iframe>
   <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
   <script src="SCapi.js"></script>
   <script>
@@ -85,13 +79,22 @@
           eventName = SC.Widget.Events[eventKey];
           widget.bind(eventName, function(eventData) {
             console.log("SC.Widget.Events." + eventKey +  " " + JSON.stringify(eventData || {}));
+            var element = document.getElementById('tgl');
+            if(eventKey === "PAUSE") {
+              console.log("pausing....");
+              element.src = "img/Play.png";
+            } else {
+              console.log("playing...");
+              element.src = "img/Pause.png";
+            }
           });
+
+
+
         }(eventName, eventKey))
       }
 
       var playBtn = document.querySelector('.tgl');
-      var myActionButtons = document.querySelectorAll('.actionButtons a');
-      console.log(myActionButtons);
       addEvent(playBtn, 'click', function(e){
         if (e.target !== this) {
               e.stopPropagation();
@@ -102,10 +105,8 @@
             widget['toggle'](value);
       })
 
-      var playBtn = document.querySelector('.prev');
-      var myActionButtons = document.querySelectorAll('.actionButtons a');
-      console.log(myActionButtons);
-      addEvent(playBtn, 'click', function(e){
+      var prevBtn = document.querySelector('.prev');
+      addEvent(prevBtn, 'click', function(e){
         if (e.target !== this) {
               e.stopPropagation();
               return false;
@@ -115,10 +116,8 @@
             widget['prev'](value);
       })
 
-      var playBtn = document.querySelector('.next');
-      var myActionButtons = document.querySelectorAll('.actionButtons a');
-      console.log(myActionButtons);
-      addEvent(playBtn, 'click', function(e){
+      var nextBtn = document.querySelector('.next');
+      addEvent(nextBtn, 'click', function(e){
         if (e.target !== this) {
               e.stopPropagation();
               return false;
@@ -127,22 +126,6 @@
             var value = input && input.value;
             widget['next'](value);
       })
-
-      var actionButtons = document.querySelectorAll('.actionButtons button');
-      //console.log(actionButtons[0]);
-      for(btn of actionButtons){
-        addEvent(btn, 'click', function(e){
-          if (e.target !== this) {
-                e.stopPropagation();
-                return false;
-              }
-              var input = this.querySelector('input');
-              console.log(input);
-              var value = input && input.value;
-              console.log(this.className);
-              widget[this.className](value);
-        })
-      }
   }())
 
   </script>
