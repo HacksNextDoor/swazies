@@ -25,7 +25,6 @@
             <img src="img/Next.png" style="margin-top: 8px;">
           </button>
       </div>
-
     </div>
   </div>
 
@@ -83,10 +82,10 @@
             if(eventKey === "PAUSE") {
               console.log("pausing....");
               element.src = "img/Play.png";
-            } else {
+            } else if (eventKey === "PLAY"){
               console.log("playing...");
               element.src = "img/Pause.png";
-            }
+            } 
           });
 
 
