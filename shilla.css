@@ -33,3 +33,21 @@
   flex:1;
   text-align: center;
 }
+
+.music-player{
+  flex: 1;
+  height: 75px;
+  justify-content: flex-start;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hide {
+  display: none;
+}
+
+.actionButtons{
+  padding: 10px 0;
+}

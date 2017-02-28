@@ -11,7 +11,28 @@
       Your browser does not support the video tag.
     </video>
 
- <dl class="actionButtons"><dd><button class="play">Play</button></dd><dd><button class="pause">Pause</button></dd><dd><button class="toggle">Toggle</button></dd><dd><button class="prev">Prev</button></dd><dd><button class="next">Next</button></dd></dl>
+  <div style="width:100%; height:40px; display:flex; flex-direction:row;">
+
+    <div class="music-player">
+      <div class="actionButtons">
+          <button class="toggle">Toggle</button>
+          <button class="prev">Prev</button>
+          <button class="next">Next</button>
+
+          <a class="waves-effect waves-teal btn-flat">
+            <img src="img/Prev.png" style="margin-top: 8px;">
+          </a>
+          <a id="tgl" class="waves-effect waves-teal btn-flat tgl">
+            <img src="img/Play.png">
+          </a>
+          <a class="waves-effect waves-teal btn-flat">
+            <img src="img/Next.png" style="margin-top: 8px;">
+          </a>
+      </div>
+    </div>
+     <!-- <a class="waves-effect waves-teal btn-flat">Button</a> -->
+  </div>
+
 
   <div class="s-body">
     <div class="s-logo">
@@ -19,7 +40,7 @@
         <img src="img/Title.png" alt="">
       </div>
       <div style="width:100%">
-        <iframe id="player" class="iframe" width="100%" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/202840785&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;color=CD0000&ampvisual=true"></iframe>
+        <iframe id="player" class="iframe hide" width="500" height="75" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/202840785&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;color=CD0000&ampvisual=true"></iframe>
       </div>
       <div class="s-media-container">
         <div class="s-media">
@@ -68,8 +89,20 @@
         }(eventName, eventKey))
       }
 
+      var playBtn = document.querySelector('.tgl')
+      addEvent(playBtn, 'click', function(e){
+        if (e.target !== this) {
+              e.stopPropagation();
+              return false;
+            }
+            var input = this.querySelector('input');
+            var value = input && input.value;
+            widget['toggle'](value);
+      })
+      console.log(playBtn);
+
       var actionButtons = document.querySelectorAll('.actionButtons button');
-      console.log(actionButtons);
+      //console.log(actionButtons[0]);
       for(btn of actionButtons){
         addEvent(btn, 'click', function(e){
           if (e.target !== this) {
@@ -77,7 +110,9 @@
                 return false;
               }
               var input = this.querySelector('input');
+              console.log(input);
               var value = input && input.value;
+              console.log(this.className);
               widget[this.className](value);
         })
       }
@@ -95,4 +130,5 @@
   </script>
 
   <!-- Materialize.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 </body>
